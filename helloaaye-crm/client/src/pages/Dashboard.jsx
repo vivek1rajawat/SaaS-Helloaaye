@@ -33,6 +33,7 @@ const Dashboard = () => {
   const [search, setSearch] = useState('');
   const [industryFilter, setIndustryFilter] = useState('All');
   const [deletingId, setDeletingId] = useState(null);
+  const [expandedId, setExpandedId] = useState(null);
 
   const loadInquiries = async () => {
     setLoading(true);
@@ -187,7 +188,13 @@ const Dashboard = () => {
                       <td className="px-4 py-3 whitespace-nowrap">{inquiry.country}</td>
                       <td className="px-4 py-3 whitespace-nowrap">{inquiry.industry}</td>
                       <td className="px-4 py-3 whitespace-nowrap">{inquiry.companySize}</td>
-                      <td className="px-4 py-3 max-w-xs truncate" title={inquiry.message}>
+                      <td
+                        onClick={() => setExpandedId((prev) => (prev === inquiry._id ? null : inquiry._id))}
+                        className={`px-4 py-3 max-w-xs cursor-pointer ${
+                          expandedId === inquiry._id ? 'whitespace-normal break-words' : 'truncate'
+                        }`}
+                        title={expandedId === inquiry._id ? '' : inquiry.message}
+                      >
                         {inquiry.message}
                       </td>
                       <td className="px-4 py-3 whitespace-nowrap text-gray-500 dark:text-gray-400">
