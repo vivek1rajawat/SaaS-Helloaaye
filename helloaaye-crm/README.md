@@ -56,4 +56,4 @@ Client runs on `http://localhost:5173`.
 ## Deployment
 
 - **Frontend (Vercel):** set root directory to `client`, build command `npm run build`, output `dist`, and set `VITE_API_URL` to your deployed backend URL.
-- **Backend (Render):** set root directory to `server`, build command `npm install`, start command `npm start`, and set `MONGO_URI`, `PORT`, `CLIENT_URL` env vars.
+- **Backend (Render):** set root directory to `server`, build command `npm install`, start command `npm start`, and set `MONGO_URI`, `PORT`, `CLIENT_URL`, `NODE_ENV=production` env vars. `NODE_ENV=production` is required — without it, error responses include full stack traces.
