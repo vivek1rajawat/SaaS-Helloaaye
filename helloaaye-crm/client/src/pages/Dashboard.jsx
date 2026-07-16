@@ -162,6 +162,7 @@ const Dashboard = () => {
                   <th className="px-4 py-3 font-semibold">Country</th>
                   <th className="px-4 py-3 font-semibold">Industry</th>
                   <th className="px-4 py-3 font-semibold">Size</th>
+                  <th className="px-4 py-3 font-semibold">Message</th>
                   <th className="px-4 py-3 font-semibold">Submitted</th>
                   <th className="px-4 py-3 font-semibold text-right">Action</th>
                 </tr>
@@ -169,7 +170,7 @@ const Dashboard = () => {
               <tbody>
                 {filtered.length === 0 ? (
                   <tr>
-                    <td colSpan={9} className="px-4 py-10 text-center text-gray-500 dark:text-gray-400">
+                    <td colSpan={10} className="px-4 py-10 text-center text-gray-500 dark:text-gray-400">
                       No inquiries found.
                     </td>
                   </tr>
@@ -186,6 +187,9 @@ const Dashboard = () => {
                       <td className="px-4 py-3 whitespace-nowrap">{inquiry.country}</td>
                       <td className="px-4 py-3 whitespace-nowrap">{inquiry.industry}</td>
                       <td className="px-4 py-3 whitespace-nowrap">{inquiry.companySize}</td>
+                      <td className="px-4 py-3 max-w-xs truncate" title={inquiry.message}>
+                        {inquiry.message}
+                      </td>
                       <td className="px-4 py-3 whitespace-nowrap text-gray-500 dark:text-gray-400">
                         {new Date(inquiry.createdAt).toLocaleDateString()}
                       </td>
